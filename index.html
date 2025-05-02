@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme S. Bertoso | Terminal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+        
+        .terminal {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .terminal-header {
+            background-color: #2d2d2d;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 8px 12px;
+        }
+        
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        
+        .terminal-content {
+            padding: 16px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        
+        .command-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .prompt {
+            color: #4CAF50;
+            margin-right: 8px;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 16px;
+            background-color: #e0e0e0;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .sidebar {
+            background-color: #252526;
+            border-right: 1px solid #333;
+        }
+        
+        .sidebar-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #2a2d2e;
+        }
+        
+        .sidebar-item.active {
+            background-color: #37373d;
+            border-left: 3px solid #4CAF50;
+        }
+        
+        .project-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            transition: all 0.2s;
+        }
+        
+        .project-item:hover {
+            background-color: #2a2d2e;
+            padding-left: 8px;
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #252526;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 4px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #4CAF50;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4CAF50 }
+        }
+    </style>
+</head>
+<body class="h-screen flex items-center justify-center p-4">
+    <div class="terminal w-full max-w-6xl h-full flex flex-col">
+        <div class="terminal-header flex items-center">
+            <div class="terminal-button bg-red-500"></div>
+            <div class="terminal-button bg-yellow-500"></div>
+            <div class="terminal-button bg-green-500"></div>
+            <div class="ml-4 text-sm">guilherme_0u1@terminal: ~/portfolio</div>
+        </div>
+        
+        <div class="flex flex-1 overflow-hidden">
+            <div class="sidebar w-64 flex-shrink-0 overflow-y-auto">
+                <div class="p-4 border-b border-gray-700">
+                    <h2 class="text-xl font-bold text-green-400">guilherme_0u1</h2>
+                    <p class="text-xs text-gray-400">Terminal Portfolio</p>
+                </div>
+                
+                <div class="sidebar-item active" data-tab="welcome">
+                    <i class="fas fa-terminal mr-2 text-green-400"></i>
+                    Welcome
+                </div>
+                
+                <div class="sidebar-item" data-tab="projects">
+                    <i class="fas fa-folder-open mr-2 text-blue-400"></i>
+                    Projects
+                </div>
+                
+                <div class="sidebar-item" data-tab="skills">
+                    <i class="fas fa-code mr-2 text-yellow-400"></i>
+                    Skills
+                </div>
+                
+                <div class="sidebar-item" data-tab="contact">
+                    <i class="fas fa-envelope mr-2 text-purple-400"></i>
+                    Contact
+                </div>
+                
+                <div class="p-4 mt-4 border-t border-gray-700">
+                    <div class="text-xs text-gray-400 mb-2">System Info:</div>
+                    <div class="text-xs">
+                        <div class="flex justify-between">
+                            <span>OS:</span>
+                            <span class="text-green-400">Linux</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Shell:</span>
+                            <span class="text-green-400">zsh</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>CPU:</span>
+                            <span class="text-green-400">Intel i7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-content flex-1 overflow-y-auto">
+                <!-- Welcome Tab -->
+                <div id="welcome" class="tab-content active">
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span class="typewriter">Welcome to guilherme_0u1's terminal portfolio</span>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ whoami</p>
+                        <p class="ml-8">Guilherme Bertoso</p>
+                        <p class="ml-8">Full Stack Developer & Game Developer</p>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ cat about.txt</p>
+                        <p class="ml-8">Passionate developer with experience in multiple programming languages</p>
+                        <p class="ml-8">and frameworks. Always learning new technologies and building cool projects.</p>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ ls /portfolio</p>
+                        <p class="ml-8">projects/ skills/ contact/</p>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ help</p>
+                        <p class="ml-8">Navigate using the sidebar or type commands:</p>
+                        <p class="ml-8">- projects: Show my GitHub projects</p>
+                        <p class="ml-8">- skills: Display my technical skills</p>
+                        <p class="ml-8">- contact: Get in touch with me</p>
+                        <p class="ml-8">- clear: Clear the terminal</p>
+                    </div>
+                    
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span id="command-input" contenteditable="true" class="flex-1 outline-none"></span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+                
+                <!-- Projects Tab -->
+                <div id="projects" class="tab-content">
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span>fetching projects from github.com/guilherme_0u1...</span>
+                    </div>
+                    
+                    <div id="projects-list" class="my-4">
+                        <div class="text-gray-500 italic">Loading projects...</div>
+                    </div>
+                    
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span id="projects-command-input" contenteditable="true" class="flex-1 outline-none"></span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+                
+                <!-- Skills Tab -->
+                <div id="skills" class="tab-content">
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span>displaying skills...</span>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ cat skills.txt</p>
+                        
+                        <div class="ml-8">
+                            <h3 class="text-lg font-bold mb-2">Programming Languages:</h3>
+                            <div>
+                                <span class="skill-badge bg-blue-500">Python</span>
+                                <span class="skill-badge bg-blue-700">C++</span>
+                                <span class="skill-badge bg-yellow-600">GDScript</span>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold mt-4 mb-2">Web Development:</h3>
+                            <div>
+                                <span class="skill-badge bg-orange-500">HTML</span>
+                                <span class="skill-badge bg-blue-400">CSS</span>
+                                <span class="skill-badge bg-yellow-400">JavaScript</span>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold mt-4 mb-2">Tools & Frameworks:</h3>
+                            <div>
+                                <span class="skill-badge bg-green-600">Godot Engine</span>
+                                <span class="skill-badge bg-gray-600">Git</span>
+                                <span class="skill-badge bg-purple-600">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span id="skills-command-input" contenteditable="true" class="flex-1 outline-none"></span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+                
+                <!-- Contact Tab -->
+                <div id="contact" class="tab-content">
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span>contact information...</span>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ cat contact.txt</p>
+                        <div class="ml-8">
+                            <p><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:guilhermedasilvabertoso@gmail.com" class="text-blue-400 hover:underline">guilhermedasilvabertoso@gmail.com</a></p>
+                            <p><i class="fab fa-github mr-2"></i> GitHub: <a href="https://github.com/guilherme_0u1" target="_blank" class="text-blue-400 hover:underline">github.com/guilherme_0u1</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="my-6">
+                        <p class="text-green-400">$ send_message --to=guilherme</p>
+                        <div class="ml-8">
+                            <p>Feel free to reach out for collaborations, job opportunities,</p>
+                            <p>or just to say hello! I'm always open to interesting projects.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="command-line">
+                        <span class="prompt">$</span>
+                        <span id="contact-command-input" contenteditable="true" class="flex-1 outline-none"></span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    sidebarItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Show the selected tab content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // Focus the appropriate command input
+                    const inputId = `${tabId}-command-input`;
+                    const input = document.getElementById(inputId) || document.getElementById('command-input');
+                    input.focus();
+                });
+            });
+            
+            // Command input functionality
+            const commandInputs = document.querySelectorAll('[contenteditable="true"]');
+            
+            commandInputs.forEach(input => {
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const command = this.textContent.trim();
+                        this.textContent = '';
+                        
+                        // Process command
+                        processCommand(command);
+                    }
+                });
+                
+                // Make sure the input is focused when clicking in the tab
+                input.addEventListener('click', function() {
+                    this.focus();
+                });
+            });
+            
+            // Function to process commands
+            function processCommand(command) {
+                const activeTab = document.querySelector('.tab-content.active').id;
+                
+                switch(command.toLowerCase()) {
+                    case 'clear':
+                        // Clear the terminal content (except the last command line)
+                        const terminalContent = document.querySelector('.terminal-content');
+                        const commandLines = terminalContent.querySelectorAll('.command-line');
+                        if (commandLines.length > 1) {
+                            for (let i = 0; i < commandLines.length - 1; i++) {
+                                commandLines[i].remove();
+                            }
+                        }
+                        break;
+                        
+                    case 'projects':
+                        document.querySelector('[data-tab="projects"]').click();
+                        break;
+                        
+                    case 'skills':
+                        document.querySelector('[data-tab="skills"]').click();
+                        break;
+                        
+                    case 'contact':
+                        document.querySelector('[data-tab="contact"]').click();
+                        break;
+                        
+                    case 'help':
+                        if (activeTab === 'welcome') {
+                            const helpSection = document.createElement('div');
+                            helpSection.className = 'my-6';
+                            helpSection.innerHTML = `
+                                <p class="text-green-400">$ help</p>
+                                <p class="ml-8">Available commands:</p>
+                                <p class="ml-8">- projects: Show my GitHub projects</p>
+                                <p class="ml-8">- skills: Display my technical skills</p>
+                                <p class="ml-8">- contact: Get in touch with me</p>
+                                <p class="ml-8">- clear: Clear the terminal</p>
+                            `;
+                            document.querySelector('.terminal-content').insertBefore(helpSection, document.querySelector('.command-line'));
+                        }
+                        break;
+                        
+                    default:
+                        const output = document.createElement('div');
+                        output.className = 'my-6';
+                        output.innerHTML = `
+                            <p class="text-green-400">$ ${command}</p>
+                            <p class="ml-8 text-red-400">Command not found. Type 'help' for available commands.</p>
+                        `;
+                        document.querySelector('.terminal-content').insertBefore(output, document.querySelector('.command-line'));
+                }
+            }
+            
+            // Fetch GitHub projects
+            async function fetchGitHubProjects() {
+                try {
+                    const response = await fetch('https://api.github.com/users/guilherme_0u1/repos');
+                    const projects = await response.json();
+                    
+                    const projectsList = document.getElementById('projects-list');
+                    projectsList.innerHTML = '';
+                    
+                    if (projects.length === 0) {
+                        projectsList.innerHTML = '<div class="text-gray-500 italic">No projects found.</div>';
+                        return;
+                    }
+                    
+                    projects.forEach(project => {
+                        const projectItem = document.createElement('div');
+                        projectItem.className = 'project-item';
+                        projectItem.innerHTML = `
+                            <a href="${project.html_url}" target="_blank" class="flex items-center justify-between">
+                                <div>
+                                    <h
