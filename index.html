@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guilherme S. Bertoso | Terminal Portfolio</title>
+    <title>Guilherme S. Bertoso | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -163,14 +163,14 @@
             <div class="terminal-button bg-red-500"></div>
             <div class="terminal-button bg-yellow-500"></div>
             <div class="terminal-button bg-green-500"></div>
-            <div class="ml-4 text-sm">guilherme_0u1@terminal: ~/portfolio</div>
+            <div class="ml-4 text-sm">guilherme_bertoso@terminal: ~/portfolio</div>
         </div>
         
         <div class="flex flex-1 overflow-hidden">
             <div class="sidebar w-64 flex-shrink-0 overflow-y-auto">
                 <div class="p-4 border-b border-gray-700">
-                    <h2 class="text-xl font-bold text-green-400">guilherme_0u1</h2>
-                    <p class="text-xs text-gray-400">Terminal Portfolio</p>
+                    <h2 class="text-xl font-bold text-green-400">guilherme_bertoso</h2>
+                    <p class="text-xs text-gray-400">Portfolio</p>
                 </div>
                 
                 <div class="sidebar-item active" data-tab="welcome">
@@ -217,7 +217,7 @@
                 <div id="welcome" class="tab-content active">
                     <div class="command-line">
                         <span class="prompt">$</span>
-                        <span class="typewriter">Welcome to guilherme_0u1's terminal portfolio</span>
+                        <span class="typewriter">Welcome to guilherme_bertoso's terminal portfolio</span>
                     </div>
                     
                     <div class="my-6">
@@ -284,23 +284,29 @@
                         <div class="ml-8">
                             <h3 class="text-lg font-bold mb-2">Programming Languages:</h3>
                             <div>
-                                <span class="skill-badge bg-blue-500">Python</span>
-                                <span class="skill-badge bg-blue-700">C++</span>
-                                <span class="skill-badge bg-yellow-600">GDScript</span>
+                                <span class="skill-badge bg-blue-500">Python (5 years)</span>
+                                <span class="skill-badge bg-yellow-600">GDScript (3 years)</span>
+                                <span class="skill-badge bg-blue-700">C++ (studing)</span>
                             </div>
                             
                             <h3 class="text-lg font-bold mt-4 mb-2">Web Development:</h3>
                             <div>
-                                <span class="skill-badge bg-orange-500">HTML</span>
-                                <span class="skill-badge bg-blue-400">CSS</span>
-                                <span class="skill-badge bg-yellow-400">JavaScript</span>
+                                <span class="skill-badge bg-orange-500">HTML (studing)</span>
+                                <span class="skill-badge bg-blue-400">CSS (studing)</span>
+                                <span class="skill-badge bg-yellow-400">JavaScript (studing)</span>
                             </div>
                             
                             <h3 class="text-lg font-bold mt-4 mb-2">Tools & Frameworks:</h3>
                             <div>
                                 <span class="skill-badge bg-green-600">Godot Engine</span>
                                 <span class="skill-badge bg-gray-600">Git</span>
-                                <span class="skill-badge bg-purple-600">Tailwind CSS</span>
+                                <span class="skill-badge bg-purple-600">Unreal Engine</span>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold mt-4 mb-2">Languages:</h3>
+                            <div>
+                                <span class="skill-badge bg-green-600">Brazilian portuguese</span>
+                                <span class="skill-badge bg-gray-600">English</span>
                             </div>
                         </div>
                     </div>
@@ -464,8 +470,30 @@
                     
                     projects.forEach(project => {
                         const projectItem = document.createElement('div');
-                        projectItem.className = 'project-item';
-                        projectItem.innerHTML = `
-                            <a href="${project.html_url}" target="_blank" class="flex items-center justify-between">
-                                <div>
-                                    <h
+                                                projectItem.className = 'project-item';
+                                                projectItem.innerHTML = `
+                                                    <a href="${project.html_url}" target="_blank" class="flex items-center justify-between">
+                                                        <div>
+                                                            <h4 class="font-bold text-blue-400">${project.name}</h4>
+                                                            <p class="text-xs text-gray-400">${project.description ? project.description : ''}</p>
+                                                        </div>
+                                                        <span class="text-xs text-gray-500">${project.language ? project.language : ''}</span>
+                                                    </a>
+                                                `;
+                                                projectsList.appendChild(projectItem);
+                                            });
+                                        } catch (error) {
+                                            const projectsList = document.getElementById('projects-list');
+                                            projectsList.innerHTML = '<div class="text-red-400">Failed to load projects.</div>';
+                                        }
+                                    }
+                        
+                                    // Fetch projects when Projects tab is clicked
+                                    document.querySelector('[data-tab="projects"]').addEventListener('click', fetchGitHubProjects);
+                        
+                                    // Autofocus the first command input on load
+                                    document.getElementById('command-input').focus();
+                                });
+                            </script>
+                        </body>
+                        </html>
