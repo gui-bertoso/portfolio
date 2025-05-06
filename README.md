@@ -1,1 +1,1 @@
-meu site de portfólio para você poder saber mais sobre mim
+meu site de portfólio para você poder saber mais sobre mim e a única coisa que não foi feita por mim sozinho, não gosto de ajudar externas para meus projetos próprios.
