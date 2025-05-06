@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guilherme S. Bertoso | Portfolio</title>
+    <title>Guilherme Da S. Bertoso | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -223,13 +223,15 @@
                     <div class="my-6">
                         <p class="text-green-400">$ whoami</p>
                         <p class="ml-8">Guilherme Bertoso</p>
-                        <p class="ml-8">Full Stack Developer & Game Developer</p>
+                        <p class="ml-8">Full Stack Developer, Game Developer & 3D Modeler</p>
                     </div>
                     
                     <div class="my-6">
                         <p class="text-green-400">$ cat about.txt</p>
-                        <p class="ml-8">Passionate developer with experience in multiple programming languages</p>
-                        <p class="ml-8">and frameworks. Always learning new technologies and building cool projects.</p>
+                        <p class="ml-8">I have really liked the technology area since I was a child, I started studying </p>
+                        <p class="ml-8">programming in 2020 during the pandemic, and from then until now I have only sought to</p>
+                        <p class="ml-8">expand my knowledge and build a portfolio to be able to grow in the area. Always</p>
+                        <p class="ml-8">learning new technologies and building cool projects.</p>
                     </div>
                     
                     <div class="my-6">
@@ -303,10 +305,15 @@
                                 <span class="skill-badge bg-purple-600">Unreal Engine</span>
                             </div>
                             
+                            <h3 class="text-lg font-bold mt-4 mb-2">Others:</h3>
+                            <div>
+                                <span class="skill-badge bg-green-600">3D modeler (practicing for 2 years)</span>
+                            </div>
+                            
                             <h3 class="text-lg font-bold mt-4 mb-2">Languages:</h3>
                             <div>
-                                <span class="skill-badge bg-green-600">Brazilian portuguese</span>
-                                <span class="skill-badge bg-gray-600">English</span>
+                                <span class="skill-badge bg-green-600">Brazilian portuguese (mother tongue)</span>
+                                <span class="skill-badge bg-gray-600">English (average reading and speaking)</span>
                             </div>
                         </div>
                     </div>
@@ -457,7 +464,7 @@
             // Fetch GitHub projects
             async function fetchGitHubProjects() {
                 try {
-                    const response = await fetch('https://api.github.com/users/guilherme_0u1/repos');
+                    const response = await fetch('https://api.github.com/users/guilherme0u1/repos');
                     const projects = await response.json();
                     
                     const projectsList = document.getElementById('projects-list');
