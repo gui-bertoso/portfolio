@@ -4,7 +4,7 @@
     <meta name="copyright" content="© 2025 Guilherme da Silva Bertoso">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guilherme Da S. Bertoso | Portfolio</title>
+    <title>gui.bertoso | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -164,13 +164,13 @@
             <div class="terminal-button bg-red-500"></div>
             <div class="terminal-button bg-yellow-500"></div>
             <div class="terminal-button bg-green-500"></div>
-            <div class="ml-4 text-sm">guilherme_bertoso@terminal: ~/portfolio</div>
+            <div class="ml-4 text-sm">gui.bertoso@terminal: ~/portfolio</div>
         </div>
         
         <div class="flex flex-1 overflow-hidden">
             <div class="sidebar w-64 flex-shrink-0 overflow-y-auto">
                 <div class="p-4 border-b border-gray-700">
-                    <h2 class="text-xl font-bold text-green-400">guilherme_bertoso</h2>
+                    <h2 class="text-xl font-bold text-green-400">gui.bertoso</h2>
                     <p class="text-xs text-gray-400">Portfolio</p>
                 </div>
                 
@@ -199,11 +199,11 @@
                     <div class="text-xs">
                         <div class="flex justify-between">
                             <span>OS:</span>
-                            <span class="text-green-400">Linux</span>
+                            <span class="text-green-400">Windows</span>
                         </div>
                         <div class="flex justify-between">
                             <span>Shell:</span>
-                            <span class="text-green-400">zsh</span>
+                            <span class="text-green-400">cmd</span>
                         </div>
                         <div class="flex justify-between">
                             <span>CPU:</span>
@@ -226,12 +226,12 @@
                 <div id="welcome" class="tab-content active">
                     <div class="command-line">
                         <span class="prompt">$</span>
-                        <span class="typewriter">Welcome to guilherme_bertoso's terminal portfolio</span>
+                        <span class="typewriter">Welcome to gui.bertoso's terminal portfolio</span>
                     </div>
                     
                     <div class="my-6">
                         <p class="text-green-400">$ whoami</p>
-                        <p class="ml-8">Guilherme Bertoso</p>
+                        <p class="ml-8">gui.bertoso</p>
                         <p class="ml-8">Full Stack Developer, Game Developer & 3D Modeler</p>
                     </div>
                     
@@ -268,7 +268,7 @@
                 <div id="projects" class="tab-content">
                     <div class="command-line">
                         <span class="prompt">$</span>
-                        <span>fetching projects from github.com/guilherme0u1...</span>
+                        <span>fetching projects from github.com/gui-bertoso...</span>
                     </div>
                     
                     <div id="projects-list" class="my-4">
@@ -298,6 +298,7 @@
                                 <span class="skill-badge bg-blue-500">Python (5 years)</span>
                                 <span class="skill-badge bg-yellow-600">GDScript (3 years)</span>
                                 <span class="skill-badge bg-blue-700">C++ (studing)</span>
+                                <span class="skill-badge bg-blue-700">C# (studing)</span>
                             </div>
                             
                             <h3 class="text-lg font-bold mt-4 mb-2">Web Development:</h3>
@@ -346,7 +347,7 @@
                         <p class="text-green-400">$ cat contact.txt</p>
                         <div class="ml-8">
                             <p><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:guilhermedasilvabertoso@gmail.com" class="text-blue-400 hover:underline">guilhermedasilvabertoso@gmail.com</a></p>
-                            <p><i class="fab fa-github mr-2"></i> GitHub: <a href="https://github.com/guilherme0u1" target="_blank" class="text-blue-400 hover:underline">github.com/guilherme0u1</a></p>
+                            <p><i class="fab fa-github mr-2"></i> GitHub: <a href="https://github.com/gui-bertoso" target="_blank" class="text-blue-400 hover:underline">github.com/guilherme0u1</a></p>
                         </div>
                     </div>
                     
@@ -474,7 +475,7 @@
             // Fetch GitHub projects
             async function fetchGitHubProjects() {
                 try {
-                    const response = await fetch('https://api.github.com/users/guilherme0u1/repos');
+                    const response = await fetch('https://api.github.com/users/gui-bertoso/repos');
                     const projects = await response.json();
                     
                     const projectsList = document.getElementById('projects-list');
