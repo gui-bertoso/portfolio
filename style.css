@@ -244,3 +244,38 @@ h1 {
     justify-content: center;
     }
 }
+
+/* Keep project links recognizable without relying on hover. */
+.project h2 a,
+.contact-line a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+a:focus-visible,
+#projects:focus-visible {
+    outline: 3px solid #f0ce77;
+    outline-offset: 5px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    transform: translateY(-200%);
+    padding: 10px 16px;
+    background: #ffffff;
+    color: #000000;
+    z-index: 10;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
