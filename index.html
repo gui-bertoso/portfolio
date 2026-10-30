@@ -7,9 +7,10 @@
     <title>gui.bertoso | portfolio</title>
 </head>
 <body>
-<div class="container">
+<a class="skip-link" href="#projects">skip to projects</a>
+<main class="container" id="main-content">
     <header class="hero">
-        <div class="duck"></div>
+        <div class="duck" aria-hidden="true">🦆</div>
         <h1>gui.bertoso</h1>
         <p class="subtitle">c# & python developer into game engines and machine learning</p>
         <p class="small-text">building games, engines, local tools and experiments to understand how things work</p>
@@ -31,13 +32,13 @@
         </div>
     </section>
 
-    <section id="projects">
-        <h2 class="section-title">──── projects ────</h2>
+    <section id="projects" tabindex="-1" aria-labelledby="projects-title">
+        <h2 class="section-title" id="projects-title">──── projects ────</h2>
 
         <div class="projects-grid">
 
             <div class="project main-project">
-                <h2>maya</h2>
+                <h2><a href="https://github.com/gui-bertoso/maya">maya</a></h2>
                 <p>a local desktop assistant built in python, with voice interaction, offline speech recognition and tools for everyday workflows.</p>
                 <span class="tag">main project</span>
                 <span class="tag">python</span>
@@ -46,7 +47,7 @@
             </div>
 
             <div class="project">
-                <h2>duck engine</h2>
+                <h2><a href="https://github.com/gui-bertoso/duck-engine-python">duck engine</a></h2>
                 <p>a python/pygame engine prototype exploring nodes, scenes and runtime inspection.</p>
                 <span class="tag">python</span>
                 <span class="tag">2d</span>
@@ -55,7 +56,7 @@
             </div>
 
             <div class="project">
-                <h2>project horizons</h2>
+                <h2><a href="https://github.com/gui-bertoso/project-horizons">project horizons</a></h2>
                 <p>procedural systems experiment focused on reusable gameplay logic, world generation ideas and scalable architecture.</p>
                 <span class="tag">godot</span>
                 <span class="tag">gdscript</span>
@@ -63,7 +64,7 @@
             </div>
 
             <div class="project">
-                <h2>godot dialogue editor</h2>
+                <h2><a href="https://github.com/gui-bertoso/godot-dialogue-editor">godot dialogue editor</a></h2>
                 <p>a visual dialogue editor for godot .net, extracted from a private version of project horizons. branching graphs and readable .dalge files.</p>
                 <span class="tag">c#</span>
                 <span class="tag">.net</span>
@@ -71,7 +72,7 @@
             </div>
 
             <div class="project">
-                <h2>call of mages</h2>
+                <h2><a href="https://github.com/gui-bertoso/call-of-mages">call of mages</a></h2>
                 <p>combat and magic prototype focused on gameplay feel, iteration speed and clear modular game systems.</p>
                 <span class="tag">prototype</span>
                 <span class="tag">combat</span>
@@ -79,7 +80,7 @@
             </div>
 
             <div class="project">
-                <h2>machine learning experiments</h2>
+                <h2><a href="https://github.com/gui-bertoso/machine-learning-experiments">machine learning experiments</a></h2>
                 <p>small python experiments and studies in machine learning. learning by building, testing and seeing what breaks.</p>
                 <span class="tag">python</span>
                 <span class="tag">automation</span>
@@ -112,10 +113,10 @@
         <div id="contact" class="contact-box">
             <h2 class="section-title">contact</h2>
             <p class="contact-line"><b>discord:</b> pato_lizo</p>
-            <p class="contact-line"><b>github:</b> gui-bertoso</p>
+            <p class="contact-line"><b>github:</b> <a href="https://github.com/gui-bertoso">gui-bertoso</a></p>
             <p class="contact-line"><b>identity:</b> patoLizo</p>
         </div>
     </section>
-</div>
+</main>
 </body>
 </html>
